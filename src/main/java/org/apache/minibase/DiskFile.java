@@ -339,7 +339,9 @@ public class DiskFile implements Closeable {
     }
 
     public void append(KeyValue kv) throws IOException {
-      if (kv == null) return;
+      if (kv == null) {
+        return;
+      }
 
       assert kv.getSerializeSize() + BlockWriter.KV_SIZE_LEN + BlockWriter.CHECKSUM_LEN < BLOCK_SIZE_UP_LIMIT;
 
@@ -389,6 +391,7 @@ public class DiskFile implements Closeable {
       out.write(buffer);
     }
 
+    @Override
     public void close() throws IOException {
       if (out != null) {
         try {

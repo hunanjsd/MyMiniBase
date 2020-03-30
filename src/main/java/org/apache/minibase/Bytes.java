@@ -12,7 +12,9 @@ public class Bytes {
   }
 
   public static byte[] toBytes(String s) throws IOException {
-    if (s == null) return new byte[0];
+    if (s == null) {
+      return new byte[0];
+    }
     return s.getBytes("UTF-8");
   }
 
@@ -52,8 +54,12 @@ public class Bytes {
   }
 
   public static byte[] toBytes(byte[] a, byte[] b) {
-    if (a == null) return b;
-    if (b == null) return a;
+    if (a == null) {
+      return b;
+    }
+    if (b == null) {
+      return a;
+    }
     byte[] result = new byte[a.length + b.length];
     System.arraycopy(a, 0, result, 0, a.length);
     System.arraycopy(b, 0, result, a.length, b.length);
@@ -91,7 +97,9 @@ public class Bytes {
   }
 
   public static int hash(byte[] key) {
-    if (key == null) return 0;
+    if (key == null) {
+      return 0;
+    }
     int h = 1;
     for (int i = 0; i < key.length; i++) {
       h = (h << 5) + h + key[i];
@@ -100,9 +108,15 @@ public class Bytes {
   }
 
   public static int compare(byte[] a, byte[] b) {
-    if (a == b) return 0;
-    if (a == null) return -1;
-    if (b == null) return 1;
+    if (a == b) {
+      return 0;
+    }
+    if (a == null) {
+      return -1;
+    }
+    if (b == null) {
+      return 1;
+    }
     for (int i = 0, j = 0; i < a.length && j < b.length; i++, j++) {
       int x = a[i] & 0xFF;
       int y = b[i] & 0xFF;

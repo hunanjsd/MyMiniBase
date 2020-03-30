@@ -3,6 +3,9 @@ package org.apache.minibase;
 import java.io.Closeable;
 import java.io.IOException;
 
+/**
+ * @author simo
+ */
 public interface MiniBase extends Closeable {
 
   void put(byte[] key, byte[] value) throws IOException;

@@ -9,8 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
+
+import static java.util.concurrent.Executors.*;
 
 public class MStore implements MiniBase {
 
@@ -26,7 +27,7 @@ public class MStore implements MiniBase {
     assert conf != null;
 
     // initialize the thread pool;
-    this.pool = Executors.newFixedThreadPool(conf.getMaxThreadPoolSize());
+    this.pool = newFixedThreadPool(conf.getMaxThreadPoolSize());
 
     // initialize the disk store.
     this.diskStore = new DiskStore(conf.getDataDir(), conf.getMaxDiskFiles());
